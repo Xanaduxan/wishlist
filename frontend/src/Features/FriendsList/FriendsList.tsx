@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
 import { deleteFriend } from './friendSlice';
+import './FriendList.css';
 
 function FriendsList(): JSX.Element {
    const [login, setLogin] = useState('');
@@ -13,10 +14,12 @@ function FriendsList(): JSX.Element {
 
    const FindMyFriend = myfriendsAll.filter((myFriend) => myFriend?.login.includes(login));
    return (
-      <div>
-         <button type="button">My friends</button>
-         <button type="button" onClick={() => navigate('/myfriends/find')}>Find friends</button>
-         <button type="button" onClick={() => navigate('/myfriends/applications')}>Applications</button><br />
+<>
+      <div className="button-friend-list">
+         <button className="button-friend" type="button">Мои друзья</button>
+         <button className="button-friend" type="button" onClick={() => navigate('/myfriends/find')}>Поиск пользователей</button>
+         <button className="button-friend" type="button" onClick={() => navigate('/myfriends/applications')}>Заявки в друзья</button><br />
+      </div>
          <input value={login} type="text" placeholder="Name Friend" onChange={(e) => setLogin(e.target.value)} />
          <div className="friendDiv">
 
@@ -25,7 +28,7 @@ function FriendsList(): JSX.Element {
             <img className="fotoFriend" src={friend.image} alt="fotoFriend" />
             <p>{friend.login}</p>
             <p>{friend.gender}</p>
-            <button onClick={() => dispatch(deleteFriend(friend.id))} type="button">Delete</button>
+            <button className="button-friend" onClick={() => dispatch(deleteFriend(friend.id))} type="button">Удалить</button>
             </div>
          ))}
            {requestsAdd.map((friend) => (
@@ -33,12 +36,12 @@ function FriendsList(): JSX.Element {
             <img className="fotoFriend" src={friend.image} alt="fotoFriend" />
             <p>{friend.login}</p>
             <p>{friend.gender}</p>
-            <button onClick={() => dispatch(deleteFriend(friend.id))} type="button">Delete</button>
+            <button className="button-friend" onClick={() => dispatch(deleteFriend(friend.id))} type="button">Удалить</button>
             </div>
          ))}
 
          </div>
-      </div>
+</>
    );
 }
 

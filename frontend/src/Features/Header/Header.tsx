@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { userLogoutAsync, initialState } from '../Registration/userSlice';
+import './Header.css';
 
 // const pages = ['My wishes', 'My friends', 'My groups', 'Registration', 'Login'];
   const pages = [
@@ -65,7 +66,6 @@ import { userLogoutAsync, initialState } from '../Registration/userSlice';
   const userProfileState = useAppSelector((state) => state?.userProfile);
   const dispatch = useAppDispatch();
 
-
   function handleLogout():void {
     dispatch(userLogoutAsync());
     navigate('/');
@@ -74,7 +74,7 @@ import { userLogoutAsync, initialState } from '../Registration/userSlice';
       }
 
   return (
-    <AppBar position="static">
+    <AppBar className="header-container" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography

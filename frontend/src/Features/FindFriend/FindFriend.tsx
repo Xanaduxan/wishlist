@@ -17,9 +17,11 @@ function FindFriend(): JSX.Element {
   
    return (
       <div>
-         <button onClick={() => navigate('/myfriends')} type="button">My friends</button>
-         <button type="button" onClick={() => navigate('/myfriends/find')}>Find friends</button>
-         <button type="button" onClick={() => navigate('/myfriends/applications')}>Applications</button><br />
+         <div className="button-friend-list">
+         <button className="button-friend" onClick={() => navigate('/myfriends')} type="button">Мои друзья</button>
+         <button className="button-friend" type="button" onClick={() => navigate('/myfriends/find')}>Поиск пользователей</button>
+         <button className="button-friend" type="button" onClick={() => navigate('/myfriends/applications')}>Заявки в друзья</button><br />
+         </div>
          <input value={loginUser} type="text" placeholder="Name Friend" onChange={(e) => setLoginUser(e.target.value)} />
 
          {/* {newFriends.map((newFriend) => (
@@ -34,7 +36,7 @@ function FindFriend(): JSX.Element {
                <img className="fotoFriend" src={user.image} alt="" />
                <p>{user.login}</p>
                <p>{user.gender}</p>
-               {friendList.includes(user.id) ? null : <button type="button" onClick={() => dispatch(postAsyncReq(user.id))}>Add in Friends</button>}
+               {friendList.includes(user.id) ? null : <button type="button" onClick={() => dispatch(postAsyncReq(user.id))}>Добавить в друзья</button>}
             </div>
          ))}
 
